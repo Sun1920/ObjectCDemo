@@ -36,4 +36,8 @@ typedef struct Object {
 
 idt newObject(Class cls);
 
+typedef Class * MetaClass;
+
+Class initializeClass(void);
+
 #endif /* stobj_class_h */

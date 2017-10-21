@@ -10,6 +10,26 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+MetaClass initializeMetaClass(){
+    static MetaClass p = NULL;
+    if(NULL != p) return p;
+    do {
+        p = malloc(sizeof(Class));
+    } while (p == NULL);
+    return p;
+}
+
+Class initializeClass(){
+    MetaClass metaClass = initializeMetaClass();
+    static Class p = NULL;
+    if(NULL != p) return p;
+    do {
+        p = malloc(sizeof(stobjc_class));
+    } while (p == NULL);
+    p->isa = *metaClass;
+    return p;
+}
+
 void printMySelf() {
     printf("stobj_class\n");
 }

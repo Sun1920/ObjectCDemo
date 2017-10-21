@@ -11,12 +11,12 @@
 #include "stobj_class.h"
 #include "stobj_object.h"
 
+
 int main(int argc, const char * argv[]) {
-    
-    Class myClass = malloc(sizeof(stobjc_class));
-    idt obj = newObject(myClass);
+    Class const class = initializeClass();
+    idt obj = newObject(class);
     msgSend(obj, "printMyClass");
     free(obj);
-    free(myClass);
+    free(class);
     return 0;
 }
